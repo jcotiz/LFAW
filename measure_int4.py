@@ -11,20 +11,23 @@ login(token=os.getenv("HF_TOKEN"))
 
 # ── INT8 configuration ─────────────────────────────────────────
 quantization_config = BitsAndBytesConfig(
-    load_in_8bit=True
+    load_in_4bit=True,
+    bnb_4bit_compute_dtype=torch.float16,
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_quant_type="nf4",
 )
 
 print("Loading model in INT8...")
 model = AutoModelForCausalLM.from_pretrained(
     "meta-llama/Llama-3.1-8B",
     quantization_config=quantization_config,
-    device_map="cpu"
+    device_map="cuda"
 )
 tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.1-8B")
 
 # ── Same test as before for comparison ────────────────────────
 prompt = "Artificial intelligence is"
-inputs = tokenizer(prompt, return_tensors="pt")
+inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
 
 NUM_TOKENS = 50
 
