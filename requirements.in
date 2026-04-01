@@ -1,0 +1,9 @@
+--index-url https://download.pytorch.org/whl/cu126
+
+accelerate    
+bitsandbytes  
+pip-tools     
+python-dotenv 
+torchaudio    
+torchvision   
+transformers  
