@@ -8,7 +8,7 @@ load_dotenv()
 
 login(token=os.getenv("HF_TOKEN"))
 
-print("Downloading model... (first time takes ~15 min, then it's cached)")
+print("Downloading model... (first time takes 15 min, then its cached)")
 
 model = AutoModelForCausalLM.from_pretrained(
     "meta-llama/Llama-3.1-8B",
@@ -18,7 +18,7 @@ model = AutoModelForCausalLM.from_pretrained(
 
 tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-3.1-8B")
 
-# ── Basic inspection ───────────────────────────────────────────
+# Basic inspection
 print("\n=== ARCHITECTURE ===")
 print(f"Number of layers:     {len(model.model.layers)}")
 print(f"Model dimension:      {model.config.hidden_size}")
