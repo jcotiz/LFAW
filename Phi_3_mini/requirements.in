@@ -1,0 +1,10 @@
+accelerate
+bitsandbytes
+hf-xet
+httpx
+pip-tools
+python-dotenv
+torchaudio
+torchvision
+transformers
+typer
